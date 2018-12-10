@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.*;
 
+import static java.lang.Double.valueOf;
+
+import static java.util.Comparator.comparing;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Locations {
 
@@ -17,14 +21,14 @@ public class Locations {
     public Store[] getNumberOfStoresFromASinglePoint(int number, String latitude, String longitude) {
         List<Store> storesWithDistance = new ArrayList();
         for (Store store : stores) {
-            int distance = HaversineFormula.calculate(Double.valueOf(latitude), Double.valueOf(longitude),
-                    Double.valueOf(store.getLatitude()), Double.valueOf(store.getLongitude()));
+            int distance = HaversineFormula.calculate(valueOf(latitude), valueOf(longitude),
+                    valueOf(store.getLatitude()), valueOf(store.getLongitude()));
 
             Store copy = store.copy(distance);
             storesWithDistance.add(copy);
         }
 
-        Collections.sort(storesWithDistance, Comparator.comparing(Store::getDistance));
+        storesWithDistance.sort(comparing(Store::getDistance));
 
         Store[] arrayLimitByNumber = new Store[number];
         System.arraycopy(storesWithDistance.toArray(), 0, arrayLimitByNumber, 0, number);

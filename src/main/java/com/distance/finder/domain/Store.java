@@ -77,42 +77,6 @@ public class Store {
         return distance;
     }
 
-//    public void setAddressName(String addressName) {
-//        this.addressName = addressName;
-//    }
-//
-//    public void setCity(String city) {
-//        this.city = city;
-//    }
-//
-//    public void setPostalCode(String postalCode) {
-//        this.postalCode = postalCode;
-//    }
-//
-//    public void setStreet(String street) {
-//        this.street = street;
-//    }
-//
-//    public void setStreet2(String street2) {
-//        this.street2 = street2;
-//    }
-//
-//    public void setStreet3(String street3) {
-//        this.street3 = street3;
-//    }
-//
-//    public void setLongitude(String longitude) {
-//        this.longitude = longitude;
-//    }
-//
-//    public void setLatitude(String latitude) {
-//        this.latitude = latitude;
-//    }
-//
-//    public void setComplexNumber(String complexNumber) {
-//        this.complexNumber = complexNumber;
-//    }
-
     @Override
     public String toString() {
         return "Store{" +
