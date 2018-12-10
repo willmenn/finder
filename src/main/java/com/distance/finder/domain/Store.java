@@ -76,11 +76,4 @@ public class Store {
     int getDistance() {
         return distance;
     }
-
-    @Override
-    public String toString() {
-        return "Store{" +
-                "city='" + city + '\'' +
-                '}';
-    }
 }

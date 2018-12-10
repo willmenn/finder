@@ -21,8 +21,8 @@ public class StoreController {
 
     @GetMapping("/stores/{number}/from-single-point")
     public Store[] getClosestFiveStoresFromPoint(@PathVariable("number") int number,
-                                                     @RequestParam String latitude,
-                                                     @RequestParam String longitude) {
+                                                 @RequestParam String latitude,
+                                                 @RequestParam String longitude) {
         return locations.getNumberOfStoresFromASinglePoint(number, latitude, longitude);
     }
 }

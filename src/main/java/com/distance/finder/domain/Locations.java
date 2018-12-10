@@ -17,7 +17,6 @@ public class Locations {
         return stores;
     }
 
-
     public Store[] getNumberOfStoresFromASinglePoint(int number, String latitude, String longitude) {
         List<Store> storesWithDistance = new ArrayList();
         for (Store store : stores) {
@@ -34,13 +33,5 @@ public class Locations {
         System.arraycopy(storesWithDistance.toArray(), 0, arrayLimitByNumber, 0, number);
 
         return arrayLimitByNumber;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Locations{" +
-                "stores=" + stores +
-                '}';
     }
 }
