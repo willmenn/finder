@@ -15,13 +15,13 @@ public class Store {
     private String complexNumber;
     private int distance;
 
-    public Store copy() {
+    Store copy(int distance) {
         return new Store(this.addressName, this.city, this.postalCode,
-                this.street, this.street2, this.street3, this.longitude, this.latitude, this.complexNumber);
+                this.street, this.street2, this.street3, this.longitude, this.latitude, this.complexNumber, distance);
     }
 
-    public Store(String addressName, String city, String postalCode, String street, String street2, String street3,
-                 String longitude, String latitude, String complexNumber) {
+    private Store(String addressName, String city, String postalCode, String street, String street2, String street3,
+                  String longitude, String latitude, String complexNumber, int distance) {
         this.addressName = addressName;
         this.city = city;
         this.postalCode = postalCode;
@@ -31,6 +31,7 @@ public class Store {
         this.longitude = longitude;
         this.latitude = latitude;
         this.complexNumber = complexNumber;
+        this.distance = distance;
     }
 
     public Store() {
@@ -72,49 +73,45 @@ public class Store {
         return complexNumber;
     }
 
-    public int getDistance() {
+    int getDistance() {
         return distance;
     }
 
-    public void setAddressName(String addressName) {
-        this.addressName = addressName;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public void setStreet2(String street2) {
-        this.street2 = street2;
-    }
-
-    public void setStreet3(String street3) {
-        this.street3 = street3;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public void setComplexNumber(String complexNumber) {
-        this.complexNumber = complexNumber;
-    }
-
-    public void setDistance(int distance) {
-        this.distance = distance;
-    }
+//    public void setAddressName(String addressName) {
+//        this.addressName = addressName;
+//    }
+//
+//    public void setCity(String city) {
+//        this.city = city;
+//    }
+//
+//    public void setPostalCode(String postalCode) {
+//        this.postalCode = postalCode;
+//    }
+//
+//    public void setStreet(String street) {
+//        this.street = street;
+//    }
+//
+//    public void setStreet2(String street2) {
+//        this.street2 = street2;
+//    }
+//
+//    public void setStreet3(String street3) {
+//        this.street3 = street3;
+//    }
+//
+//    public void setLongitude(String longitude) {
+//        this.longitude = longitude;
+//    }
+//
+//    public void setLatitude(String latitude) {
+//        this.latitude = latitude;
+//    }
+//
+//    public void setComplexNumber(String complexNumber) {
+//        this.complexNumber = complexNumber;
+//    }
 
     @Override
     public String toString() {

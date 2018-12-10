@@ -6,12 +6,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @SpringBootApplication
+@EnableSwagger2
 public class FinderApplication {
 
     public static void main(String[] args) {
@@ -23,9 +25,7 @@ public class FinderApplication {
     public Locations buildLocationsFromFile() {
         try {
             byte[] mapData = Files.readAllBytes(Paths.get("stores.json"));
-            Locations locations = new ObjectMapper().readValue(mapData, Locations.class);
-            System.out.println(locations);
-            return locations;
+            return new ObjectMapper().readValue(mapData, Locations.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

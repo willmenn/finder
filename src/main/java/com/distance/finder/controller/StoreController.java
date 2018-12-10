@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 public class StoreController {
 
@@ -26,7 +24,7 @@ public class StoreController {
     }
 
     @GetMapping("/stores/{number}/from-single-point")
-    public List<Store> getClosestFiveStoresFromPoint(@PathVariable("number") int number,
+    public Store[] getClosestFiveStoresFromPoint(@PathVariable("number") int number,
                                                      @RequestParam String latitude,
                                                      @RequestParam String longitude) {
         return locations.getNumberOfStoresFromASinglePoint(number, latitude, longitude);

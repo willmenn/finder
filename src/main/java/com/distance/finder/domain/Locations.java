@@ -14,20 +14,20 @@ public class Locations {
     }
 
 
-    public List<Store> getNumberOfStoresFromASinglePoint(int number, String latitude, String longitude) {
+    public Store[] getNumberOfStoresFromASinglePoint(int number, String latitude, String longitude) {
         List<Store> storesWithDistance = new ArrayList();
         for (Store store : stores) {
-            Store copy = store.copy();
             int distance = HaversineFormula.calculate(Double.valueOf(latitude), Double.valueOf(longitude),
-                    Double.valueOf(copy.getLatitude()), Double.valueOf(copy.getLongitude()));
-            copy.setDistance(distance);
+                    Double.valueOf(store.getLatitude()), Double.valueOf(store.getLongitude()));
+
+            Store copy = store.copy(distance);
             storesWithDistance.add(copy);
         }
 
         Collections.sort(storesWithDistance, Comparator.comparing(Store::getDistance));
 
-        List<Store> arrayLimitByNumber = new ArrayList<>();
-        System.arraycopy(storesWithDistance, 0, arrayLimitByNumber, 0, number);
+        Store[] arrayLimitByNumber = new Store[number];
+        System.arraycopy(storesWithDistance.toArray(), 0, arrayLimitByNumber, 0, number);
 
         return arrayLimitByNumber;
     }
