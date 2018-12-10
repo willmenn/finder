@@ -1,10 +1,10 @@
 package com.distance.finder.domain;
 
-public class HaversineFormula {
+class HaversineFormula {
     private  final static double AVERAGE_RADIUS_OF_EARTH_KM = 6371;
 
-    public static int calculate(double userLat, double userLng,
-                                double venueLat, double venueLng) {
+    static int calculate(double userLat, double userLng,
+                         double venueLat, double venueLng) {
         double latDistance = Math.toRadians(userLat - venueLat);
         double lngDistance = Math.toRadians(userLng - venueLng);
 

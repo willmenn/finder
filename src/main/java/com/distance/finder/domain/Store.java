@@ -10,8 +10,8 @@ public class Store {
     private String street;
     private String street2;
     private String street3;
-    private String longitude;
-    private String latitude;
+    private Double longitude;
+    private Double latitude;
     private String complexNumber;
     private int distance;
 
@@ -21,7 +21,7 @@ public class Store {
     }
 
     private Store(String addressName, String city, String postalCode, String street, String street2, String street3,
-                  String longitude, String latitude, String complexNumber, int distance) {
+                  Double longitude, Double latitude, String complexNumber, int distance) {
         this.addressName = addressName;
         this.city = city;
         this.postalCode = postalCode;
@@ -61,11 +61,11 @@ public class Store {
         return street3;
     }
 
-    public String getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public String getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
