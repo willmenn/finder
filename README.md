@@ -8,7 +8,7 @@ To access Swagger:
 Test Data:
 
 ```
-Amsterdan
+Amsterdam
 Latitude: 52.3727598
 Longitude: 4.8936041
 

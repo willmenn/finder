@@ -36,6 +36,6 @@ public class GeoPosition {
     @Getter
     private static class StoreDistance {
         private Store store;
-        private int distance;
+        private double distance;
     }
 }

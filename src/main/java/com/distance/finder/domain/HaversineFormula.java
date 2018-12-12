@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 class HaversineFormula {
     private final static double AVERAGE_RADIUS_OF_EARTH_KM = 6371;
 
-    int calculate(double userLat, double userLng,
-                  double venueLat, double venueLng) {
+    double calculate(double userLat, double userLng,
+                     double venueLat, double venueLng) {
         double latDistance = Math.toRadians(userLat - venueLat);
         double lngDistance = Math.toRadians(userLng - venueLng);
 
@@ -15,8 +15,6 @@ class HaversineFormula {
                 + Math.cos(Math.toRadians(userLat)) * Math.cos(Math.toRadians(venueLat))
                 * Math.sin(lngDistance / 2) * Math.sin(lngDistance / 2);
 
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        return (int) (Math.round(AVERAGE_RADIUS_OF_EARTH_KM * c));
+        return AVERAGE_RADIUS_OF_EARTH_KM * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
     }
 }
