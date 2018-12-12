@@ -1,10 +1,13 @@
 package com.distance.finder.domain;
 
-class HaversineFormula {
-    private  final static double AVERAGE_RADIUS_OF_EARTH_KM = 6371;
+import org.springframework.stereotype.Component;
 
-    static int calculate(double userLat, double userLng,
-                         double venueLat, double venueLng) {
+@Component
+class HaversineFormula {
+    private final static double AVERAGE_RADIUS_OF_EARTH_KM = 6371;
+
+    int calculate(double userLat, double userLng,
+                  double venueLat, double venueLng) {
         double latDistance = Math.toRadians(userLat - venueLat);
         double lngDistance = Math.toRadians(userLng - venueLng);
 

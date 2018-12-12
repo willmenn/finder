@@ -1,5 +1,7 @@
 package com.distance.finder.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,20 +14,28 @@ import static java.util.Comparator.comparing;
 public class GeoPosition {
 
     private StoreService storeService;
+    private HaversineFormula formula;
 
     @Autowired
-    public GeoPosition(StoreService storeService) {
+    public GeoPosition(StoreService storeService, HaversineFormula formula) {
         this.storeService = storeService;
+        this.formula = formula;
     }
 
     public List<Store> getNumberOfStoresFromASinglePoint(int number, Double latitude, Double longitude) {
         return storeService.stores.stream()
-                .map(store -> {
-                    int distance = HaversineFormula.calculate(latitude, longitude,
-                            store.getLatitude(), store.getLongitude());
-                    return store.copy(distance);
-                }).sorted(comparing(Store::getDistance))
+                .map(store -> new StoreDistance(store, formula.calculate(latitude, longitude,
+                        store.getLatitude(), store.getLongitude())))
+                .sorted(comparing(StoreDistance::getDistance))
+                .map(StoreDistance::getStore)
                 .limit(number)
                 .collect(Collectors.toList());
+    }
+
+    @AllArgsConstructor
+    @Getter
+    private static class StoreDistance {
+        private Store store;
+        private int distance;
     }
 }
