@@ -2,9 +2,7 @@ package com.distance.finder.domain;
 
 import org.junit.Test;
 
-import static com.distance.finder.domain.StoreAndDistanceStub.AMSTERDAM;
-import static com.distance.finder.domain.StoreAndDistanceStub.BRUSSELS;
-import static com.distance.finder.domain.StoreAndDistanceStub.DISTANCE_AMSTERDAM_BRUSSELS;
+import static com.distance.finder.domain.StoreAndDistanceStub.*;
 import static org.junit.Assert.*;
 
 public class HaversineFormulaTest {

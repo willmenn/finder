@@ -2,15 +2,15 @@ package com.distance.finder;
 
 import com.distance.finder.domain.StoreService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.*;
+
 
 @SpringBootApplication
 @EnableSwagger2
@@ -22,9 +22,9 @@ public class FinderApplication {
 
     @Bean
     @Profile("default")
-    public StoreService buildLocationsFromFile() {
+    public StoreService buildLocationsFromFile(@Value("${stores.file}") String storesFilePath) {
         try {
-            byte[] mapData = Files.readAllBytes(Paths.get("stores.json"));
+            byte[] mapData = Files.readAllBytes(Paths.get(storesFilePath));
             return new ObjectMapper().readValue(mapData, StoreService.class);
         } catch (IOException e) {
             throw new RuntimeException(e);

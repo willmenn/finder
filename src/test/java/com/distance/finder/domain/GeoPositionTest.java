@@ -1,18 +1,13 @@
 package com.distance.finder.domain;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.*;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.distance.finder.domain.StoreAndDistanceStub.AMSTERDAM;
-import static com.distance.finder.domain.StoreAndDistanceStub.BRUSSELS;
-import static com.distance.finder.domain.StoreAndDistanceStub.LUXEMBOURG;
+import static com.distance.finder.domain.StoreAndDistanceStub.*;
 import static org.junit.Assert.*;
 
 public class GeoPositionTest {
