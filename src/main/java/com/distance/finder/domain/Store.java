@@ -1,8 +1,12 @@
 package com.distance.finder.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Getter
+@NoArgsConstructor
 public class Store {
     private String addressName;
     private String city;
@@ -32,48 +36,5 @@ public class Store {
         this.latitude = latitude;
         this.complexNumber = complexNumber;
         this.distance = distance;
-    }
-
-    public Store() {
-    }
-
-    public String getAddressName() {
-        return addressName;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public String getStreet2() {
-        return street2;
-    }
-
-    public String getStreet3() {
-        return street3;
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public String getComplexNumber() {
-        return complexNumber;
-    }
-
-    int getDistance() {
-        return distance;
     }
 }
