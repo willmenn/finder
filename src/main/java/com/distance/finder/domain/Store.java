@@ -14,7 +14,7 @@ public class Store {
     private String street;
     private String street2;
     private String street3;
-    private Double longitude;
     private Double latitude;
+    private Double longitude;
     private String complexNumber;
 }
