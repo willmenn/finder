@@ -39,5 +39,6 @@ dependencies {
 }
 
 bootRun {
+    systemProperty "spring.profiles.active", "test"
     systemProperty "stores.file", "src/main/resources/stores.json"
 }

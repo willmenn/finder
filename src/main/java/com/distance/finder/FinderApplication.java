@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.*;
+import org.springframework.core.io.ClassPathResource;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.io.IOException;
-import java.nio.file.*;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 
@@ -26,7 +29,20 @@ public class FinderApplication {
     }
 
     @Bean
+    @Profile("default")
     public StoreService buildLocationsFromFile(@Value("${stores.file}") String storesFilePath) {
+        try {
+            InputStream inputStream = new ClassPathResource("classpath:" + storesFilePath).getInputStream();
+            return new ObjectMapper().readValue(inputStream, StoreService.class);
+        } catch (IOException e) {
+            log.info(FILE_NOT_FOUND_MSG_ERROR, e);
+            return new StoreService(new ArrayList<>());
+        }
+    }
+
+    @Bean
+    @Profile("test")
+    public StoreService buildLocationsFromFileForTests(@Value("${stores.file}") String storesFilePath) {
         try {
             byte[] mapData = Files.readAllBytes(Paths.get(storesFilePath));
             return new ObjectMapper().readValue(mapData, StoreService.class);
