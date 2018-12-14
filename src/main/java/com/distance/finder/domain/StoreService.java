@@ -9,5 +9,5 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StoreService {
-    List<Store> stores;
+   private  List<Store> stores;
 }

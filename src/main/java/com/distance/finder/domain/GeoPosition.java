@@ -22,7 +22,7 @@ public class GeoPosition {
     }
 
     public List<Store> getNumberOfStoresFromASinglePoint(int number, Double latitude, Double longitude) {
-        return storeService.stores.stream()
+        return storeService.getStores().stream()
                 .map(store -> new StoreDistance(store, formula.calculate(latitude, longitude,
                         store.getLatitude(), store.getLongitude())))
                 .sorted(comparing(StoreDistance::getDistance))

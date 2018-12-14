@@ -21,7 +21,6 @@ public class FinderApplication {
     }
 
     @Bean
-    @Profile("default")
     public StoreService buildLocationsFromFile(@Value("${stores.file}") String storesFilePath) {
         try {
             byte[] mapData = Files.readAllBytes(Paths.get(storesFilePath));
@@ -29,11 +28,5 @@ public class FinderApplication {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Bean
-    @Profile("test")
-    public StoreService test() {
-        return new StoreService();
     }
 }
