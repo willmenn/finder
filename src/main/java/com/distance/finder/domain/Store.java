@@ -17,4 +17,5 @@ public class Store {
     private Double latitude;
     private Double longitude;
     private String complexNumber;
+    private String uuid;
 }

@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.springframework.http.HttpStatus.OK;
+
 @RestController
 public class StoreController {
 
@@ -22,6 +24,7 @@ public class StoreController {
     }
 
     @GetMapping("/stores/nearby")
+    @ResponseStatus(OK)
     public List<Store> getClosestFiveStoresFromPoint(@RequestParam Double latitude,
                                                      @RequestParam Double longitude) {
         return geoPosition
