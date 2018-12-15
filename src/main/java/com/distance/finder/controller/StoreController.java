@@ -30,4 +30,5 @@ public class StoreController {
         return geoPosition
                 .getNumberOfStoresFromASinglePoint(5, latitude, longitude);
     }
+
 }

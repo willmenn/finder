@@ -23,7 +23,7 @@ repositories {
     mavenCentral()
 }
 
-sourceSets.main.resources.includes = ["**/*.json", "**/*.properties"]
+sourceSets.main.resources.includes = ["**/*.*", "**/*.properties", "**/*.*.html","**/*.js","**/*.css"]
 sourceSets.test.resources.includes = ["**/*.json", "**/*.properties"]
 
 dependencies {
@@ -42,3 +42,31 @@ bootRun {
     systemProperty "spring.profiles.active", "test"
     systemProperty "stores.file", "src/main/resources/stores.json"
 }
+
+task npmInstall(type: Exec) {
+    executable "npm"
+    args "--prefix","src/main/resources/static/react", "install"
+}
+
+task npmBuild(type: Exec) {
+    executable "npm"
+    args "--prefix","src/main/resources/static/react", "run", "build"
+}
+
+task copyReactStaticFile(type: Copy) {
+        from 'src/main/resources/static/react/build/static'
+        into 'src/main/resources/static/static'
+        include '*.*'
+        include 'css/**'
+        include 'js/**'
+}
+
+task deleteReactStaticFile(type: Delete) {
+    delete "src/main/resources/static/static"
+}
+
+// Order to execute NPM
+//deleteReactStaticFile
+//npmInstall
+//npmBuild
+//copyReactStaticFile
