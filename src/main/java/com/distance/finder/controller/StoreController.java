@@ -11,6 +11,7 @@ import static org.springframework.http.HttpStatus.OK;
 @RestController
 public class StoreController {
 
+    private static final int NUMBER_OF_STORES = 5;
     private GeoPosition geoPosition;
 
     @Autowired
@@ -28,7 +29,7 @@ public class StoreController {
     public List<Store> getClosestFiveStoresFromPoint(@RequestParam Double latitude,
                                                      @RequestParam Double longitude) {
         return geoPosition
-                .getNumberOfStoresFromASinglePoint(5, latitude, longitude);
+                .getNumberOfStoresFromASinglePoint(NUMBER_OF_STORES, latitude, longitude);
     }
 
 }
