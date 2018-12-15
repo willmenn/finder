@@ -2,6 +2,11 @@ FINDER
 
 This project will find the closest stores from a single point.
 
+To build and run from gradle:
+```
+$ ./gradlew deleteReactStaticFile npmInstall npmBuild  copyReactStaticFile clean build bootRun
+```
+
 To access Swagger:
 `http://localhost:8081/swagger-ui.html#/`
 
