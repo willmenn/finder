@@ -19,11 +19,6 @@ public class StoreController {
         this.geoPosition = geoPosition;
     }
 
-    @GetMapping("/stores")
-    public GeoPosition get() {
-        return geoPosition;
-    }
-
     @GetMapping("/stores/nearby")
     @ResponseStatus(OK)
     public List<Store> getClosestFiveStoresFromPoint(@RequestParam Double latitude,

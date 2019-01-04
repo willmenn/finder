@@ -3,6 +3,7 @@ import GoogleMapReact from 'google-map-react';
 
 const StoreComponent = ({ text }) => <div style={{color: 'red'}}>{text}</div>;
 
+//Why it's not recentering after the state is changed in the props.center
 class SimpleMap extends Component {
     constructor(props) {
         super(props);

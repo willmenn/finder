@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparing;
+import static lombok.AccessLevel.PRIVATE;
 
 @Component
 public class GeoPosition {
@@ -32,7 +33,7 @@ public class GeoPosition {
     }
 
     @AllArgsConstructor
-    @Getter
+    @Getter(value = PRIVATE)
     private static class StoreDistance {
         private Store store;
         private double distance;
